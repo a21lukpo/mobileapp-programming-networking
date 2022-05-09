@@ -6,6 +6,10 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +41,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     @Override
     public void onPostExecute(String json) {
-        Log.d("MainActivity", json);
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Mountain>>() {}.getType();
+        ArrayList<Mountain> array = gson.fromJson(json, type);
+        mountainArray.addAll(array);
+        recyclerAdapter.notifyDataSetChanged();
     }
 
 }
