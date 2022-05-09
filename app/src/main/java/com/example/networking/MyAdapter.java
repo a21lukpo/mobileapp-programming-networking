@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<Mountain> Mountain;
-    public MyAdapter(ArrayList<Mountain> mountainArray) {
+    public MyAdapter(ArrayList<Mountain> Mountain) {
         this.Mountain = Mountain;
     }
 
